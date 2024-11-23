@@ -1,6 +1,6 @@
 <?php
 
-include_once "../controlSession.php";
+include_once "controlSession.php";
 
 //Nos conectamos a la base de datos.
 try {

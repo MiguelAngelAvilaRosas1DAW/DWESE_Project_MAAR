@@ -3,7 +3,7 @@
 /* BORRADO DE UN USUARIO */
 
 //Comprobamos si el usuario esta inicilizado.
-require_once "controlSession.php";
+require_once "./libs/controlSession.php";
 
 //Añadimos la clase usuario y sacamos al objeto con los datos del usuario.
 include_once "./clases/Usuario.php";

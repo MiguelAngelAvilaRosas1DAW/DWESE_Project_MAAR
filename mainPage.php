@@ -1,7 +1,7 @@
 <?php
 
 //Comprobamos si el usuario esta inicilizado.
-require_once "controlSession.php";
+require_once "./libs/controlSession.php";
 
 ?>
 

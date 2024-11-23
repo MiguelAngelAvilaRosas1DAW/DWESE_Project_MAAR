@@ -2,7 +2,7 @@
 
     //Destruye la sesion del usuario y lo devuelve al index.
 
-    include_once "../controlSession.php";
+    include_once "controlSession.php";
 
     $_SESSION = [];
 

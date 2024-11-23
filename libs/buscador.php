@@ -1,6 +1,6 @@
 <?php
 
-    include_once "../controlSession.php";
+    include_once "controlSession.php";
     
     /**
      * Funcion para añadir un buscador al principio de la pagina junto con etiquetas para el borrado del usuario y la seccion de la pagina.
