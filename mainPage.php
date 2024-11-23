@@ -38,7 +38,7 @@ require_once "./libs/controlSession.php";
     }
 
     //Añadimos el buscador por pantalla.
-    buscador("Mi biblioteca", $objetoSesion);
+    buscador("Mi biblioteca", $objetoSesion, "mainPage");
 
     ?>
 
@@ -80,8 +80,7 @@ require_once "./libs/controlSession.php";
                 <button class=\"purple__button\">Descargar</button>
                 </a>";
                 echo "<form action=\"./libs/borrarJuegos.php\" method=\"post\">
-                <input type=\"number\" placeholder=\"\" name=\"idJuego\" id=\"idJuego\" value=\"{$juego->getIdJue()}\">
-                <button class=\"red__button\">Borrar <i class=\"fa fa-times\" aria-hidden=\"true\"></i></button>
+                <button class=\"red__button\" name=\"idJuego\" id=\"idJuego\" value=\"{$juego->getIdJue()}\">Borrar <i class=\"fa fa-times\" aria-hidden=\"true\"></i></button>
                 </form>";
                 echo "</div>";
                 echo "</div>";

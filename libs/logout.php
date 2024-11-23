@@ -1,11 +1,19 @@
 <?php
 
-    //Destruye la sesion del usuario y lo devuelve al index.
+//Destruye la sesion del usuario y lo devuelve al index.
 
-    include_once "controlSession.php";
+include_once "controlSession.php";
 
-    $_SESSION = [];
+$_SESSION = [];
 
-    session_destroy();
+session_destroy();
 
-    header("Location: http://localhost:8080/ProyectoFinal/");
+// Obtener el esquema (http o https)
+$scheme = isset($_SERVER['REQUEST_SCHEME']) ? $_SERVER['REQUEST_SCHEME'] : 'https';
+// Obtener el host (dominio o subdominio actual)
+$host = $_SERVER['HTTP_HOST'];
+
+// Construir la URL del inicio
+$inicio = $scheme . "://" . $host . "/";
+
+die(header("Location: {$inicio}"));

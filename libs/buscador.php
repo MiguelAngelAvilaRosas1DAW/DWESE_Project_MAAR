@@ -8,13 +8,13 @@
      * @param mixed $objetoSesion
      * @return void
      */
-    function buscador( string $nombreTitulo, $objetoSesion) {
+    function buscador( string $nombreTitulo, $objetoSesion, $pagina) {
     ?>
 
     <div class="buscador">
         <h1 class="tituloSeccion"><?= $nombreTitulo ?></h1>
 
-        <form class="form__searcher" action="gamePage.php" method="get">
+        <form class="form__searcher" action="<?= $pagina ?>.php" method="get">
             <input type="text" class="form__searcher" name="busqueda" id="busqueda" placeholder="Busca un juego...">
             <button class="buttonSearch"><i class="fa fa-search" aria-hidden="true"></i></button>
         </form>

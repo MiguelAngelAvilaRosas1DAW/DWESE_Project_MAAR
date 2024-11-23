@@ -38,7 +38,7 @@ require_once "./libs/controlSession.php";
     }
 
     //Añadimos el buscador por pantalla.
-    buscador("Biblioteca Retro", $objetoSesion);
+    buscador("Biblioteca Retro", $objetoSesion, "gamePage");
 
     ?>
 
@@ -71,8 +71,7 @@ require_once "./libs/controlSession.php";
 
                 //Opcion para añadir el juego a tu bilbioteca.
                 echo "<form action=\"./libs/insertarJuegos.php\" method=\"post\">
-                <input type=\"number\" placeholder=\"\" name=\"idJuego\" id=\"idJuego\" value=\"{$juego->getIdJue()}\">
-                <button class=\"green__button\">Añadir juego <i class=\"fa fa-plus\" aria-hidden=\"true\"></i></button>
+                <button class=\"green__button\" name=\"idJuego\" id=\"idJuego\" value=\"{$juego->getIdJue()}\">Añadir juego <i class=\"fa fa-plus\" aria-hidden=\"true\"></i></button>
                 </form>";
                 echo "</div>";
                 $errorBusqueda = false;

@@ -412,10 +412,6 @@ body {
 
 }
 
-#idJuego {
-    display: none;
-}
-
 .panel-fade-in {
     opacity: 1;
     transform: translateY(0);
