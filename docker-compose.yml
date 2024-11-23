@@ -1,0 +1,37 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+    web:
+      build: .
+      container_name: dwes_web
+      ports: 
+        - "8080:80"
+      volumes: 
+        - ./src:/var/www/html
+      depends_on:
+        - "db" #estoy diciendo que web (apache php) depende de db
+    db:
+      image: mysql:8.0 #para MySQL usamos mysql:8.0
+      container_name: dwes_db
+      environment: 
+        MYSQL_DATABASE: mibd
+        MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      ports: 
+        - "3306:3306" #si da problemas porque hay un xampp o un msql cambiar el primer 3306 a cualquier otro pueto libre
+      #volumes: es opcional, se podria poner db_data : /var/lib/mysql esto es para acceder a los archivos de la base de datos
+        
+
+    phpmyadmin:
+      image:  phpmyadmin:latest # o phpmyadmin/phpmyadmin
+      container_name: dwes_phpmyadmin
+      restart: always
+      environment: 
+        PMA_HOST: db #donde esta montado el servidor de base de datos, en este caso es mi maquina, seria localhost 
+        #pero la base de datos esta corriendo dentro de un contenedor, por lo que localhost no encontrara la base de datos
+        #ponemos la etiqueta con la que hemos definido el servicio.
+        PMA_USER: root #usuario con el que me voy a conectar a base de datos
+      ports:
+        - "8081:80"
+      depends_on: 
+        - db #le decimos que tiene que usar el serivico de base de datos que esta aqui,osea que phpmyadmin depende de bd
