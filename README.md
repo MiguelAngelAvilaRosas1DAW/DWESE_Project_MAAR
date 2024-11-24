@@ -24,3 +24,9 @@
 <p>En esta sección se encontrara la bilioteca del usuario, en la cual estaran todos los juegos que haya añadido a esta. En la parte superior, habra una barra de navegacióm, con la cual el usuario podra indicar que juegos de du blioteca quiere buscar, en caso de que el juego que busca no existe le aparecera un mensaje indicando que no se encontro el titulo. La pagina mostrara todos los juegos que contengan en alguna parte de su titulo, busqueda realizada por el usuario. Ademas en las esquinas de la pagina habra información sobre la pagina en la que estas y el usuario con el que estas conectado, dandote la opcion de poder borrar tu usuario si quieres.<br><br>Ademas, al final de la pagina el usuario tendra la opcion añadir nuevos juegos a su biblioteca o cerrar sesion, lo que le devolvera a la pagina de Login.</p>
 
 <img src="./assets/img/mainPage_img.png"/>
+
+<h4>Biblioteca retro (gamePage.php)</h4>
+
+<p>En esta ultima sección, se econtrara la biblioteca completa de juegos retro que haya en la base de datos. Aqui el usuario tendra la opción de añadir individualmente cada juego que quiera, lo cual se mostrara en su pagina de usuario. Por lo demas, esta pagina es muy similar a la biblioteca del usuario, pero con la opción de poder añadir los juegos, en vez de descargarlos.</p>
+
+<img src="./assets/img/gamePage_img.png"/>
