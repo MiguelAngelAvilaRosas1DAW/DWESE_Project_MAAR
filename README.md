@@ -11,3 +11,4 @@
 
 <p>En esta sección se le pedira al usuario que se registre dentro de la pagina, utilizando para ello su nombre de usuario y contraseña. Si el usuario introduce los datos incorrectamente, se le dara un mesaje indicando que el usuario o la contraseña son inconrrectas. En caso de que el usuario se registre correctamente, sera enviado a su biblioteca personal.<br><br>En caso de que el usuario no se haya creado una cuenta anteriormente, tiene la opción de crear una, la cual le llevara a la sección de introducir un usuario.</p>
 
+<img src="./assets/img/index_img"/>
