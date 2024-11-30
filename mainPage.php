@@ -129,6 +129,7 @@ require_once "./libs/controlSession.php";
                 $errorBusqueda = false;
             }
         }
+        echo "</div>";
 
         if ($errorBusqueda) {
             echo "<h1 class=\"mensajeErrorBusqueda error__color\">Nombre del titulo no encontrado</h1>";
