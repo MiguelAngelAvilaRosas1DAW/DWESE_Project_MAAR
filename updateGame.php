@@ -56,7 +56,7 @@ if (!empty($_POST)):
 
         $sql = $pdo->prepare($sql);
 
-        $sql->bindValue(":idJuego", $_POST["idJuego"], PDO::PARAM_INT);
+        $sql->bindValue(":idJuego", $_POST["idJuego_update"], PDO::PARAM_INT);
         $sql->bindValue(":tituloJuego", $_POST["tituloJuego"], PDO::PARAM_STR);
         $sql->bindValue(":imgJuego", $_POST["imgJuego"], PDO::PARAM_STR);
         $sql->bindValue(":descJuego", $_POST["descJuego"], PDO::PARAM_STR);
@@ -103,7 +103,6 @@ $query->execute();
         <form action="updateGame.php" method="get">
             <select name="gameSelected" class="gameSelected" id="gameSelected">
                 <?php
-
                 while ($fila = $query->fetch(PDO::FETCH_ASSOC)) {
                     $fila = new JuegoRetro($fila);
                     echo "<option value=\"{$fila->getIdJue()}\">{$fila->getTitulo()}</option>";
@@ -118,7 +117,7 @@ $query->execute();
         <form action="updateGame.php" method="post">
 
             <div>
-                <input type="text" placeholder="" maxlength="100" required name="idJuego" id="idJuego" value="<?= $idJue ?>">
+                <input type="text" placeholder="" maxlength="100" required name="idJuego_update" id="idJuego_update" value="<?= $idJue ?>">
             </div>
 
             <div class="form__label">
