@@ -98,7 +98,7 @@ endif;
             <a href="./newUser.php">
                 <input class="green__button form__newUser" type="button" value="Crear usuario">
             </a>
-            <button class="purple__button">Registrarse</button>
+            <button class="purple__button">Entrar</button>
         </div>
     </form>
 
