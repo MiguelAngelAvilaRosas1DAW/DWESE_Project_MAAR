@@ -10,16 +10,41 @@ include_once "clases/JuegoRetro.php";
 include_once "./libs/conectarBD.php";
 
 $errorJuego = "";
+$idJue = 0;
+$titJue = "";
+$desJue = "";
+$urlJue = "";
+$imgJue = "";
+
+if (!empty($_GET)) {
+    
+    $sql = "SELECT * FROM juegosRetro WHERE idJue = :idJuego";
+    $sqlJuego = $pdo->prepare($sql);
+
+    $sqlJuego->bindValue(":idJuego", $_GET["gameSelected"], PDO::PARAM_INT);
+
+    //Ejecutamos la consulta.
+    if($sqlJuego->execute()) {
+        while ($fila = $sqlJuego->fetch(PDO::FETCH_ASSOC)) {
+            $juego = new JuegoRetro($fila);
+            $idJue = $juego->getIdJue();
+            $titJue = $juego->getTitulo();
+            $desJue = $juego->getDesc();
+            $urlJue = $juego->getEnlace();
+            $imgJue = $juego->getImg();
+        }
+    }
+}
 
 if (!empty($_POST)):
 
     $sql = "SELECT * FROM juegosRetro WHERE titJue = :tituloJuego";
     $sql = $pdo->prepare($sql);
 
-    $sql->bindValue(":tituloJuego", $_POST["tituloJuego"],PDO::PARAM_STR);
+    $sql->bindValue(":tituloJuego", $_POST["tituloJuego"], PDO::PARAM_STR);
 
     //Ejecutamos la consulta.
-    $sql->execute() ;
+    $sql->execute();
 
     //Si se devuelven filas, es que el usuario ya existe, por lo tanto madaremos un mensaje de error.
     if ($sql->rowCount() > 0) {
@@ -31,12 +56,12 @@ if (!empty($_POST)):
 
         $sql = $pdo->prepare($sql);
 
-        $sql->bindValue(":idJuego", $_POST["gameSelected"], PDO::PARAM_INT);
-        $sql->bindValue(":tituloJuego", $_POST["tituloJuego"],PDO::PARAM_STR);
-        $sql->bindValue(":imgJuego", $_POST["imgJuego"],PDO::PARAM_STR);
-        $sql->bindValue(":descJuego", $_POST["descJuego"],PDO::PARAM_STR);
-        $sql->bindValue(":urlJuego", $_POST["urlJuego"],PDO::PARAM_STR);
-        
+        $sql->bindValue(":idJuego", $_POST["idJuego"], PDO::PARAM_INT);
+        $sql->bindValue(":tituloJuego", $_POST["tituloJuego"], PDO::PARAM_STR);
+        $sql->bindValue(":imgJuego", $_POST["imgJuego"], PDO::PARAM_STR);
+        $sql->bindValue(":descJuego", $_POST["descJuego"], PDO::PARAM_STR);
+        $sql->bindValue(":urlJuego", $_POST["urlJuego"], PDO::PARAM_STR);
+
         if ($sql->execute()) {
             die(header("Location: adminPage.php"));
         } else {
@@ -64,63 +89,71 @@ endif;
 
 <?php
 
-    $sql = "SELECT * FROM juegosRetro";
+$sql = "SELECT * FROM juegosRetro";
 
-    $query = $pdo->prepare($sql);
+$query = $pdo->prepare($sql);
 
-    $query->execute();
+$query->execute();
 
 ?>
 
 <body>
-    <form class="form__login" action="updateGame.php" method="post">
+    <div class="form__login">
         <h2>Actualizar juego</h2>
-        <select name="gameSelected" class="gameSelected" id="gameSelected">
-            
-            <option>Selecciona un juego</option>
-            <?php
-            
-                while ($fila = $query->fetch(PDO::FETCH_ASSOC)){
+        <form action="updateGame.php" method="get">
+            <select name="gameSelected" class="gameSelected" id="gameSelected">
+                <?php
+
+                while ($fila = $query->fetch(PDO::FETCH_ASSOC)) {
                     $fila = new JuegoRetro($fila);
                     echo "<option value=\"{$fila->getIdJue()}\">{$fila->getTitulo()}</option>";
                 }
 
-            ?>
-            
-        </select>
+                ?>
+            </select>
+            <button id="cargarJuego">Cargar</button>
+        </form>
 
-        <div class="form__label">
-            <input type="text" placeholder="" maxlength="100" required name="tituloJuego" id="tituloJuego">
-            <label>Titulo</label>
-        </div><br><br>
 
-        <div class="form__label">
-            <input type="text" placeholder="" maxlength="255" required name="descJuego" id="descJuego">
-            <label>Descripción</label>
-        </div><br><br>
+        <form action="updateGame.php" method="post">
 
-        <div class="form__label">
-            <input type="text" placeholder="" maxlength="255" required name="urlJuego" id="urlJuego">
-            <label>Url descarga</label>
-        </div><br><br>
+            <div>
+                <input type="text" placeholder="" maxlength="100" required name="idJuego" id="idJuego" value="<?= $idJue ?>">
+            </div>
 
-        <div class="form__label">
-            <input type="text" placeholder="" maxlength="255" name="imgJuego" id="imagenJuego">
-            <label>Imagen</label>
-        </div>
-        <span><?= $errorJuego ?></span><br><br>
+            <div class="form__label">
+                <input type="text" placeholder="" maxlength="100" required name="tituloJuego" id="tituloJuego" value="<?= $titJue ?>">
+                <label>Titulo</label>
+            </div><br><br>
 
-        <div class="grid2">
-            
+            <div class="form__label">
+                <input type="text" placeholder="" maxlength="255" required name="descJuego" id="descJuego" value="<?= $desJue ?>">
+                <label>Descripción</label>
+            </div><br><br>
+
+            <div class="form__label">
+                <input type="text" placeholder="" maxlength="255" required name="urlJuego" id="urlJuego" value="<?= $urlJue ?>">
+                <label>Url descarga</label>
+            </div><br><br>
+
+            <div class="form__label">
+                <input type="text" placeholder="" maxlength="255" name="imgJuego" id="imagenJuego" value="<?= $imgJue ?>">
+                <label>Imagen</label>
+            </div>
+            <span><?= $errorJuego ?></span><br><br>
+
+            <div class="grid2">
+
                 <a href="./adminPage.php">
                     <input class="form__back" type="button" value="Volver">
                 </a>
 
                 <button class="purple__button">Actualizar</button>
 
-        </div>
-        
-    </form>
+            </div>
+
+        </form>
+    </div>
 </body>
 
 </html>

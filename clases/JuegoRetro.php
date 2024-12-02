@@ -23,7 +23,7 @@ class JuegoRetro{
     /**
      * @return string
      */
-    public function getIdJue(): string{
+    public function getIdJue(): int{
         return $this->idJue;
     }
 
@@ -32,6 +32,14 @@ class JuegoRetro{
      */
     public function getTitulo(): string {
         return $this->titJue;
+    }
+
+    public function getDesc(): string {
+        return $this->descJue;
+    }
+
+    public function getImg(): string {
+        return $this->imgJue;
     }
 
     /**
