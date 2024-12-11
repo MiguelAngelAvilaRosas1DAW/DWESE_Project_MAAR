@@ -86,18 +86,17 @@ require_once "./libs/controlSession.php";
 
     ?>
 
-    <form action="mainPage.php" method="post">
+<form action="mainPage.php" method="post">
 
-        <?php if ($ini != 0): ?>
-            <button class="arrow__button" name="valor" id="valor" value="<?php echo $ini - 1 ?>">
-                << /button>
-                <?php endif; ?>
+<?php if ($ini != 0): ?>
+    <button class="arrow__button" name="valor" id="valor" value="<?php echo $ini - 1 ?>"><</button>
+<?php endif; ?>
 
-                <?php if ($ini + 1 < $filas): ?>
-                    <button class="arrow__button" name="valor" id="valor" value="<?php echo $ini + 1 ?>">></button>
-                <?php endif; ?>
+<?php if ($ini + 1 < $filas): ?>
+    <button class="arrow__button" name="valor" id="valor" value="<?php echo $ini + 1 ?>">></button>
+<?php endif; ?>
 
-    </form>
+</form>
 
     <?php
 
