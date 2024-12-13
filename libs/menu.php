@@ -6,7 +6,7 @@
 <nav>
     <div class="row mt-4">
         <div class="col-sm-1">
-            <img class="profile" src="<?= $usuario->getFoto() ?>" />    
+            <img class="profile" src="<?= $usuario->getFoto() ?>" />
         </div>
         <div class="col">
             <h2>Bienvenido/a, <?= $usuario ?></h2>

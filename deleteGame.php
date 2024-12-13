@@ -13,12 +13,12 @@ $mensajeBorrado = "";
 
 if (!empty($_POST)) {
 
-    //Borramos de la tabla "usuarios" al usuario con la ID proporcionada.
+    //Borramos de la tabla "Juegos Retro" al usuario con la ID proporcionada.
     $sql = "DELETE FROM juegosRetro WHERE idJue = :idJuego";
 
     $sql = $pdo->prepare($sql);
 
-    //Cogemos la id del usuario conectado y la sustituimos por su valor en la consulta.
+    //Cogemos la id del juego retro y la sustituimos por su valor en la consulta.
     $sql->bindValue(":idJuego", $_POST["gameSelected"], PDO::PARAM_INT);
 
     //Ejecutamos la consulta.

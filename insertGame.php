@@ -2,7 +2,7 @@
 
 /* INSERCIÓN DE UN JUEGO POR ADMINISTRACIÓN */
 
-//Comprobamos si el usuario esta inicilizado.
+//Comprobamos si el juego esta inicilizado.
 require_once "./libs/controlSession.php";
 
 $errorJuego = "";
@@ -19,12 +19,12 @@ if (!empty($_POST)):
     //Ejecutamos la consulta.
     $sql->execute() ;
 
-    //Si se devuelven filas, es que el usuario ya existe, por lo tanto madaremos un mensaje de error.
+    //Si se devuelven filas, es que el juego ya existe, por lo tanto madaremos un mensaje de error.
     if ($sql->rowCount() > 0) {
         $errorJuego = "Este juego ya existe.";
     } else {
 
-        //Si el usuario NO existe, lo añadirmeos a la tabla de "usuarios".
+        //Si el juego NO existe, lo añadirmeos a la tabla de "Juegos Retro".
         $sql = "INSERT INTO juegosRetro(titJue, imgJue, descJue, urlJue) VALUES (:tituloJuego,:imgJuego,:descJuego,:urlJuego)";
 
         $sql = $pdo->prepare($sql);
